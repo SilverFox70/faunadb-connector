@@ -1,0 +1,20 @@
+{
+  "name": "faunadb-connector",
+  "version": "1.0.0",
+  "description": "A wrapper for the FaunaDB Javascript API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example": "echo \"Running example code...\" && node index"
+  },
+  "keywords": [
+    "faunaDB",
+    "database"
+  ],
+  "author": "William F Brinkert",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "faunadb": "^2.11.1"
+  }
+}
