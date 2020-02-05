@@ -4,7 +4,7 @@ This contains a basic wrapper class for working with the FaunaDB via the Javascr
 
 ## Basic Use
 
-To use the wrapper, import it and instantiate with your scret key. Using an admin key will allow you full access to actions within your fauna account while using other key with different permissions may limit what queries may be run.
+To use the wrapper, import it and instantiate with your secret key. Using an admin key will allow you full access to actions within your fauna account while using other keys with different permissions or roles may limit what queries may be run.
 
 ``` javascript
 const FaunaConnection = require('./FaunaConnection')
@@ -24,3 +24,5 @@ The underlying functions and client can be accessed as below for writing your ow
 fauna.q is faunadb.query
 fauna.client is the faunadb.Client
 ``` 
+  
+Visit [this webage to view the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html).
