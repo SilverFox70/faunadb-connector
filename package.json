@@ -1,20 +1,31 @@
 {
   "name": "faunadb-connector",
   "version": "1.0.0",
-  "description": "A wrapper for the FaunaDB Javascript API",
+  "description": "A basic wrapper class for the FaunaDB Javascript API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "example": "echo \"Running example code...\" && node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilverFox70/faunadb-connector.git"
   },
   "keywords": [
     "faunaDB",
     "database"
   ],
   "author": "William F Brinkert",
-  "license": "MIT",
+  "license": "ISC",
+  "homepage": "https://github.com/SilverFox70/faunadb-connector",
+  "bugs": {
+    "url": "https://github.com/SilverFox70/faunadb-connector/issues"
+  },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "faunadb": "^2.11.1"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {}
 }
