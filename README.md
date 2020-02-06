@@ -1,8 +1,8 @@
 # FaunaDB Connection
 
-This contains a basic wrapper class for working with the FaunaDB via the Javascript API. This wrapper helps to simplify some of the syntax for basic operations while still exposing the faunaDB package and Fauna Client.
+This is a convenience wrapper class for the basic functionality of the FaunaDB Javascript API. This wrapper helps to simplify some of the syntax for these basic operations while still exposing the faunaDB package and Fauna Client. You can find more information on the FaunaDB javascript API [here](https://docs.fauna.com/fauna/current/drivers/javascript.html) and basic tutorials [here](https://docs.fauna.com/fauna/current/tutorials/crud). 
 
-## Basic Use
+## Basic use
 
 To use the wrapper, import it and instantiate with your secret key. Using an admin key will allow you full access to actions within your fauna account while using other keys with different permissions or roles may limit what queries may be run.
 
@@ -160,3 +160,175 @@ The response should look something like:
   data: { first_name: 'Alex', last_name: 'Smith' } 
 }
 ```
+
+### Creating multiple documents at once
+
+The same `#create` function will also accept an array of documents. Each element in the array will be created as its own record.
+
+``` javascript
+const authorList = [
+  {
+    first_name: "Jack",
+    last_name: "London"
+  },
+  {
+    first_name: "Aldous",
+    last_name: "Huxley"
+  },
+  {
+    first_name: "Jane",
+    last_name: "Austen"
+  },
+  {
+    first_name: "Maya",
+    last_name: "Angelou"
+  },
+]
+
+fauna
+  .create('authors', authorList)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+The response should look something like:
+```bash
+[ 
+  { 
+    ref: Ref(Collection("authors"), "256569179938754057"),
+    ts: 1580942287315000,
+    data: { first_name: 'Jack', last_name: 'London' } 
+  },
+  { 
+    ref: Ref(Collection("authors"), "256569179938752009"),
+    ts: 1580942287315000,
+    data: { first_name: 'Aldous', last_name: 'Huxley' } 
+  },
+  { 
+    ref: Ref(Collection("authors"), "256569179938750985"),
+    ts: 1580942287315000,
+    data: { first_name: 'Jane', last_name: 'Austen' } 
+  },
+  { 
+    ref: Ref(Collection("authors"), "256569179938753033"),
+    ts: 1580942287315000,
+    data: { first_name: 'Maya', last_name: 'Angelou' } 
+  } 
+]
+```
+
+### Creating with custom ID
+
+The process is the same as above for creating documents, except that an array of touples must be passed in the function below. Each touple consists of `[<custom_id>, <document>]`. Each custom_id must be unique.
+
+**fauna.createWithCustomID(collection, touples)**
+
+### Getting a document
+
+There are several methods for retrieving a document from a collection within a database. The most basic `#get` works with the `ref`, or ID of the document and the collection name.
+
+
+``` javascript
+fauna
+  .get('authors', '256569179938753033')
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+``` 
+
+The response should look something like:
+```bash
+{ 
+  ref: Ref(Collection("authors"), "256569179938753033"),
+  ts: 1580942287315000,
+  data: { first_name: 'Maya', last_name: 'Angelou' } 
+}
+```
+
+In order to get a document based on data within a document itself, we must first have created and index for this and told Fauna which term we would like to search on. For example, let's consider that we created an index as below:
+
+``` javascript
+
+const terms = [{ field: ['data', 'title'] }]
+
+fauna.createIndex('posts_by_title', 'posts', term, null)
+```
+
+The above index would allow us to get a particular 'post' document by searching for it's title as shown below:
+
+``` javascript
+fauna
+  .getMatch('posts_by_title', 'My cat and other marvels')
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+Which, if the document exists, will return something like:
+``` bash
+{ 
+  ref: Ref(Collection("posts"), "256027278950009353"),
+  ts: 1580425490300000,
+  data: { title: 'My cat and other marvels' } 
+}
+```
+
+### Getting Multiple Documents
+
+There are many options which can be used and I encourage you to check out [the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html) for greater detail. Here we will go over the most basic implementation of retrievong all of the docs withing a collection.
+
+``` javascript
+fauna
+  .getAllDocsByIndex('all_authors')
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+This call should return all of the documents in the collection in a form like this, where the nested `data` Object is the document itself:
+``` bash
+{ 
+  data:[ 
+    { 
+      ref: Ref(Collection("authors"), "256563456795214345"),
+       ts: 1580936829280000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256568566847898122"),
+       ts: 1580941702620000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256569179938750985"),
+       ts: 1580942287315000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256569179938752009"),
+       ts: 1580942287315000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256569179938753033"),
+       ts: 1580942287315000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256569179938754057"),
+       ts: 1580942287315000,
+       data: [Object] 
+    },
+    { 
+      ref: Ref(Collection("authors"), "256569241022497289"),
+       ts: 1580942345550000,
+       data: [Object] 
+    } 
+  ] 
+}
+```
+
+### Updating a document
+
+> Information coming soon!
+
+### Deleting a document
+
+> Information coming soon!

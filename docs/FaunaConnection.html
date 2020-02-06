@@ -157,7 +157,8 @@
 
 
 <div class="description">
-    Creates a document within the named collection
+    Creates a document within the named collection given either single doc
+or an array of documents.
 </div>
 
 
@@ -273,7 +274,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line82">line 82</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -391,7 +392,7 @@
 
             
 
-            <td class="description last">descriptive name for the collection</td>
+            <td class="description last">A descriptive name for the collection</td>
         </tr>
 
     
@@ -461,7 +462,7 @@
 
         
 <div class="param-desc">
-    the collection reference
+    Reference to collection object
 </div>
 
 
@@ -900,373 +901,6 @@ this will create a database with the given name.
     
 
     
-    <h4 class="name" id="createMultiple"><span class="type-signature"></span>createMultiple<span class="signature">(collection, docs)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Given an array of documents will iterate through and place each
-on3 into the given collection in the database.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>collection</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">name of the collection to put the docs into</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>docs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the documents to put in the database collection</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line99">line 99</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    an array of the documents put in the database
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createMultipleCustomID"><span class="type-signature"></span>createMultipleCustomID<span class="signature">(collection, docs)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Given an array of touples [custom id,document] will iterate through 
-and place each into the given collection in the database with the 
-custom id is the 'ref' field for the document.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>collection</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">name of the collection to put the docs into</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>docs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the documents to put in the database collection</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line123">line 123</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    an array of the documents put in the database
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="createServer"><span class="type-signature"></span>createServer<span class="signature">(dbName)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
@@ -1428,7 +1062,191 @@ the given named database.
     
 
     
-    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(ref, collection)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="createWithCustomID"><span class="type-signature"></span>createWithCustomID<span class="signature">(collection, docs)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Given an array of touples [custom id,document] will iterate through 
+and place each into the given collection in the database with the 
+custom id is the 'ref' field for the document.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>collection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">name of the collection to put the docs into</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>docs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the documents to put in the database collection</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    an array of the documents put in the database
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(collection, ref)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -1472,29 +1290,6 @@ the given named database.
 
         <tr>
             
-                <td class="name"><code>ref</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the ID or ref of the doc</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>collection</code></td>
             
 
@@ -1512,6 +1307,29 @@ the given named database.
             
 
             <td class="description last">the name of the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ref</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID or ref of the doc</td>
         </tr>
 
     
@@ -1552,7 +1370,7 @@ the given named database.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line290">line 290</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line276">line 276</a>
     </li></ul></dd>
     
 
@@ -1610,7 +1428,7 @@ the given named database.
     
 
     
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(ref, collection)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(collection, ref)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -1654,29 +1472,6 @@ the given named database.
 
         <tr>
             
-                <td class="name"><code>ref</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the ID or ref of the document</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>collection</code></td>
             
 
@@ -1694,6 +1489,29 @@ the given named database.
             
 
             <td class="description last">the name of the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ref</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID or ref of the document</td>
         </tr>
 
     
@@ -1734,7 +1552,7 @@ the given named database.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line145">line 145</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -1876,11 +1694,11 @@ the given named database.
             
 
             <td class="description last">options that may be passed in include:
-- before - ref to document for traversing pagination backward
-- after - ref to document for traversing pagination forward
-- term - a such term to use with a searchable index
-- size - the number of docs to return per page
-- scope - the database ref within which to perform the match</td>
+before - ref to document for traversing pagination backward
+after - ref to document for traversing pagination forward
+term - a such term to use with a searchable index
+size - the number of docs to return per page
+scope - the database ref within which to perform the match</td>
         </tr>
 
     
@@ -1921,7 +1739,7 @@ the given named database.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line215">line 215</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -2105,7 +1923,7 @@ this will return the refs of all documents in that index.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line187">line 187</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line172">line 172</a>
     </li></ul></dd>
     
 
@@ -2292,7 +2110,7 @@ to "title", we can search that index using a value of
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line167">line 167</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line152">line 152</a>
     </li></ul></dd>
     
 
@@ -2350,7 +2168,7 @@ to "title", we can search that index using a value of
     
 
     
-    <h4 class="name" id="replace"><span class="type-signature"></span>replace<span class="signature">(ref, collection, data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="replace"><span class="type-signature"></span>replace<span class="signature">(collection, ref, data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2397,29 +2215,6 @@ the data param are removed.
 
         <tr>
             
-                <td class="name"><code>ref</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the ID or ref of the doc</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>collection</code></td>
             
 
@@ -2437,6 +2232,29 @@ the data param are removed.
             
 
             <td class="description last">the name of the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ref</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID or ref of the doc</td>
         </tr>
 
     
@@ -2500,7 +2318,7 @@ the data param are removed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line272">line 272</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line257">line 257</a>
     </li></ul></dd>
     
 
@@ -2558,7 +2376,7 @@ the data param are removed.
     
 
     
-    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(ref, collection, data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(collection, ref, data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2603,29 +2421,6 @@ data of that document.
 
         <tr>
             
-                <td class="name"><code>ref</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the ID or ref of the doc</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>collection</code></td>
             
 
@@ -2643,6 +2438,29 @@ data of that document.
             
 
             <td class="description last">the name of the collection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ref</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the ID or ref of the doc</td>
         </tr>
 
     
@@ -2706,7 +2524,7 @@ data of that document.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line249">line 249</a>
+        <a href="FaunaConnection.js.html">FaunaConnection.js</a>, <a href="FaunaConnection.js.html#line234">line 234</a>
     </li></ul></dd>
     
 
@@ -2780,7 +2598,7 @@ data of that document.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Feb 05 2020 09:57:29 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Feb 05 2020 16:09:55 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
