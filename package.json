@@ -1,6 +1,6 @@
 {
   "name": "faunadb-connector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A convenience wrapper class for basic functions of the FaunaDB Javascript API",
   "main": "index.js",
   "scripts": {
