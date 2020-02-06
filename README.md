@@ -273,7 +273,7 @@ Which, if the document exists, will return something like:
 
 ### Getting Multiple Documents
 
-There are many options which can be used and I encourage you to check out [the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html) for greater detail. Here we will go over the most basic implementation of retrievong all of the docs withing a collection.
+There are many options which can be used and I encourage you to check out [the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html) for greater detail. Here we will go over the most basic implementation of retrieving all of the docs within a collection.
 
 ``` javascript
 fauna
