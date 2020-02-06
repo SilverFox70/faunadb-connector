@@ -352,7 +352,7 @@ The response should look something like this:
 }
 ```
 
-> Note: we also support the `replace` function using the same argument list as update. See the [Fauna docs](https://docs.fauna.com/fauna/current/tutorials/crud#replace) for more information on the difference between **update** and **replace**.
+> Note: we also support the `replace` function using the same parameter list as update. See the [Fauna docs](https://docs.fauna.com/fauna/current/tutorials/crud#replace) for more information on the difference between **update** and **replace**.
 
 ### Deleting a document
 
