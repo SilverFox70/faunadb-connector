@@ -1,4 +1,4 @@
-# FaunaDB Connection
+# FaunaDB Connector
 
 This is a convenience wrapper class for the basic functionality of the FaunaDB Javascript API. This wrapper helps to simplify some of the syntax for these basic operations while still exposing the faunaDB package and Fauna Client. You can find more information on the FaunaDB javascript API [here](https://docs.fauna.com/fauna/current/drivers/javascript.html) and basic tutorials [here](https://docs.fauna.com/fauna/current/tutorials/crud). 
 
@@ -25,7 +25,7 @@ fauna.q is faunadb.query
 fauna.client is the faunadb.Client
 ``` 
   
-Visit [this webage to view the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html).
+[Visit this webpage to view the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html).
 
 ## Usage
 
@@ -70,7 +70,7 @@ The output should look like:
 
 `createIndex(name, src, terms=null, values=null)`
 
-| arg     | type   | description                                |
+| params    | type   | description                                |
 |---------|--------|--------------------------------------------|
 | name    | string | a descriptive name for this index          |
 | src     | string | the source collection this index will be applied to |
@@ -273,7 +273,7 @@ Which, if the document exists, will return something like:
 
 ### Getting Multiple Documents
 
-There are many options which can be used and I encourage you to check out [the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html) for greater detail. Here we will go over the most basic implementation of retrieving all of the docs within a collection.
+There are many options which can be used and I encourage you to check out [the class api](https://silverfox70.github.io/faunadb-connector/FaunaConnection.html) for greater detail since there a many options which are supported. Here we will go over the most basic implementation of retrieving all of the docs within a collection.
 
 ``` javascript
 fauna
@@ -327,8 +327,112 @@ This call should return all of the documents in the collection in a form like th
 
 ### Updating a document
 
-> Information coming soon!
+To modify an existing document simply pass in the new data along with the reference to the document and collection.
+``` javascript
+const birthdate = {
+  dob: "01/12/1876"
+}
+
+fauna
+  .update('authors', "256569179938754057", birthdate)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+The response should look something like this:
+``` bash
+{ 
+  ref: Ref(Collection("authors"), "256569179938754057"),
+  ts: 1581012583020000,
+  data: { 
+      first_name: 'Jack', 
+      last_name: 'London', 
+      dob: '01/12/1876' 
+  } 
+}
+```
+
+> Note: we also support the `replace` function using the same argument list as update. See the [Fauna docs](https://docs.fauna.com/fauna/current/tutorials/crud#replace) for more information on the difference between **update** and **replace**.
 
 ### Deleting a document
 
-> Information coming soon!
+A document can be removed using the `delete` function, passing in the collection and document reference.
+
+``` javascript
+fauna
+  .delete('authors', "256569179938752009")
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+The response returns the document that has been deleted.
+``` bash
+{ 
+  ref: Ref(Collection("authors"), "256569179938752009"),
+  ts: 1580942287315000,
+  data: { 
+    first_name: 'Aldous', last_name: 'Huxley' 
+  } 
+}
+```
+
+## Using the underlying API
+
+There may be actions you desire to take for which there is not yet a wrapper function in this class. Consider the example from the Fauna Tutorials for [Create a user defined function](https://docs.fauna.com/fauna/current/tutorials/crud_examples#udf-create) - we can use our `fauna` instance to write this like so:
+
+``` javascript
+fauna
+  .client
+  .query(
+    fauna.q.CreateFunction({
+      name: "create_entry",
+      body: fauna.q.Query(
+        fauna.q.Lambda(
+          ['title', 'body'],
+          fauna.q.Create(
+            fauna.q.Collection('posts'),
+            {
+              data: {
+                title: fauna.q.Var('title'),
+                body: fauna.q.Var('body')
+              }
+            }
+          )
+        )
+      ),
+      permissions: { call: 'public' },
+      role: 'server'
+    })
+  )
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+```
+
+Which will return a response like this:
+``` bash
+{ 
+  ref: Function("create_entry"),
+  ts: 1581013836710000,
+  name: 'create_entry',
+  body: Query(
+    Lambda(
+      ["title", "body"], 
+      Create(
+        Collection("posts"), 
+        {
+          data: {
+            title: Var("title"), 
+            body: Var("body")
+          }
+        }
+      )
+    )
+  ),
+  permissions: { call: 'public' },
+  role: 'server' 
+}
+```
+
+## Future Goals
+
+This is only the beginning of a basic wrapper to make implementing calls to the FaunaDB Javascript API easier to re-use. While the hope is to expand upon this, there is no desire to deal with every possible scenario a developer might encounter. That being said, if anyone has a particular feature they would like to see, or has encountered a bug or other unanticipated behavior, please [submit an issue](https://github.com/SilverFox70/faunadb-connector/labels) and I will look into it as I am able.
