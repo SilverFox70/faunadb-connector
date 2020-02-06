@@ -42,7 +42,7 @@ class FaunaConnection {
 
   /**
    * If the client was instantiated with at least a
-   * databse key, this will return a server role for
+   * database key, this will return a server role for
    * the given named database.
    * 
    * @param  {string} dbName the name of the database to create a server for
